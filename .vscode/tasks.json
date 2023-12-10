@@ -1,0 +1,26 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/src/src/LethalCompany.Doom.csproj",
+                "/p:GenerateFullPaths=true",
+                "/p:PublishPlugin=true",
+                "/consoleloggerparameters:NoSummary",
+            ],
+            "runOptions": {
+                "instanceLimit": 1
+            },
+            "problemMatcher": "$msCompile",
+            "isBuildCommand": true,
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}

@@ -1,0 +1,104 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
+    <Deterministic>true</Deterministic>
+    <EnableUnsafeBinaryFormatterSerialization>false</EnableUnsafeBinaryFormatterSerialization>
+    <Features>strict</Features>
+    <ImplicitUsings>true</ImplicitUsings>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <LangVersion>12.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <TargetFramework>netstandard2.1</TargetFramework>
+
+    <!-- analyzers -->
+    <AnalysisLevel>8.0-recommended</AnalysisLevel>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <RunAnalyzers>true</RunAnalyzers>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+
+    <RestoreAdditionalProjectSources>
+      https://api.nuget.org/v3/index.json;
+      https://nuget.bepinex.dev/v3/index.json;            
+    </RestoreAdditionalProjectSources>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="LethalCompany.Doom.Plugin.csproj.user" />
+    <Content Include="DOOM1.WAD">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ManagedDoom\ManagedDoom.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BepInEx.Analyzers" Version="1.0.8" PrivateAssets="all"/>
+    <PackageReference Include="BepInEx.Core" Version="5.4.21" PrivateAssets="all"/>
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0" PrivateAssets="all" />
+    <PackageReference Include="PolySharp" Version="1.14.0" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp" Private="False">
+      <HintPath>$(GameManagedDir)\Assembly-CSharp.dll</HintPath>
+    </Reference>
+
+    <Reference Include="UnityEngine" Private="False">
+      <HintPath>$(GameManagedDir)\UnityEngine.dll</HintPath>
+    </Reference>
+
+    <Reference Include="UnityEngine.AudioModule" Private="False">
+      <HintPath>$(GameManagedDir)\UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
+
+    <Reference Include="UnityEngine.CoreModule" Private="False">
+      <HintPath>$(GameManagedDir)\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+
+    <Reference Include="UnityEngine.InputModule" Private="False">
+      <HintPath>$(GameManagedDir)\UnityEngine.InputModule.dll</HintPath>
+    </Reference>
+
+    <Reference Include="UnityEngine.InputLegacyModule" Private="False">
+      <HintPath>$(GameManagedDir)\UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+
+    <Reference Include="Unity.InputSystem" Private="False">
+      <HintPath>$(GameManagedDir)\Unity.InputSystem.dll</HintPath>
+    </Reference>
+
+    <Reference Include="UnityEngine.UI" Private="False">
+      <HintPath>$(GameManagedDir)\UnityEngine.UI.dll</HintPath>
+    </Reference>
+
+    <Reference Include="Unity.NetCode.Runtime" Private="False">
+      <HintPath>$(GameManagedDir)\Unity.NetCode.Runtime.dll</HintPath>
+    </Reference>
+
+    <Reference Include="Unity.TextMeshPro" Private="False">
+      <HintPath>$(GameManagedDir)\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="System.Collections" />
+    <Using Include="HarmonyLib" />
+  </ItemGroup>
+
+  <Target Name="CleanPluginDirectory" AfterTargets="Clean" BeforeTargets="PublishToPluginDirectory" Condition=" '$(PublishPlugin)' == 'true' ">
+    <ItemGroup>
+      <_PluginFiles Include="$(PluginPublishDir)\**\*.*" />
+    </ItemGroup>
+
+    <Delete Files="@(_PluginFiles)" />
+  </Target>
+
+  <Target Name="PublishToPluginDirectory" AfterTargets="Publish" Condition=" '$(PublishPlugin)' == 'true' ">
+    <Exec Command="copy /y &quot;$(PublishDir)&quot; &quot;$(PluginPublishDir)&quot;" />
+  </Target>
+
+</Project>

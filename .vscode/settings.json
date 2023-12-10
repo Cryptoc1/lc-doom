@@ -1,0 +1,30 @@
+{
+  "dotnet.backgroundAnalysis.analyzerDiagnosticsScope": "fullSolution",
+  "dotnet.backgroundAnalysis.compilerDiagnosticsScope": "fullSolution",
+  "dotnet.defaultSolution": "lc-doom.sln",
+  "dotnet.implementType.propertyGenerationBehavior": "preferAutoProperties",
+  "dotnet.navigation.navigateToDecompiledSources": true,
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.cs": "${capture}.*.cs",
+    "*.csproj": "${capture}.csproj.user,${capture}.*.csproj",
+    "*.json": "${capture}.*.json",
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/node_modules/": true,
+    "**/bin/": true,
+    "**/obj/": true,
+  },
+  "omnisharp.enableLspDriver": true,
+  "omnisharp.enableEditorConfigSupport": true,
+  "omnisharp.organizeImportsOnFormat": true,
+  "omnisharp.sdkIncludePrereleases": true,
+  "omnisharp.useEditorFormattingSettings": false,
+  "omnisharp.useModernNet": true
+}

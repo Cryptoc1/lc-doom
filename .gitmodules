@@ -1,0 +1,3 @@
+[submodule "modules/managed-doom"]
+	path = modules/managed-doom
+	url = https://github.com/sinshu/managed-doom.git

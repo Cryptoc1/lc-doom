@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
+    <Deterministic>true</Deterministic>
+    <EnableNETAnalyzers>false</EnableNETAnalyzers>
+    <EnableUnsafeBinaryFormatterSerialization>false</EnableUnsafeBinaryFormatterSerialization>
+    <Features>strict</Features>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <RunAnalyzers>false</RunAnalyzers>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\modules\managed-doom\ManagedDoom\src\**\*.cs" Exclude="..\..\modules\managed-doom\ManagedDoom\src\Silk\**\*.cs">
+      <Link>%(RecursiveDir)%(Filename)%(Extension)</Link>
+    </Compile>
+  </ItemGroup>
+
+</Project>
