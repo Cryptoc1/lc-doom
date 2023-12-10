@@ -1,0 +1,46 @@
+name: default
+
+on:
+  push:
+    branches:
+      - develop
+      - main
+  pull_request:
+    branches:
+      - develop
+      - main
+  workflow_dispatch:
+
+env:
+  DOTNET_NOLOGO: true
+  NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+          submodules: recursive
+
+      - name: setup dotnet
+        uses: actions/setup-dotnet@v3
+        with:
+          cache: true
+          cache-dependency-path: src/src/packages.lock.json
+          global-json-file: global.json
+
+      - name: restore
+        run: dotnet restore src/src/LethalCompany.Doom.csproj --locked-mode
+
+      - name: publish
+        run: dotnet publish src/src/LethalCompany.Doom.csproj -o lc-doom -c Release --no-restore
+
+      - name: upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: lc-doom
+          path: lc-doom/*

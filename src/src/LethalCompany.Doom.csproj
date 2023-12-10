@@ -1,23 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
-    <Deterministic>true</Deterministic>
-    <EnableUnsafeBinaryFormatterSerialization>false</EnableUnsafeBinaryFormatterSerialization>
-    <Features>strict</Features>
     <ImplicitUsings>true</ImplicitUsings>
-    <InvariantGlobalization>true</InvariantGlobalization>
-    <LangVersion>12.0</LangVersion>
     <Nullable>enable</Nullable>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <Version>1.0.0</Version>
-
-    <!-- analyzers -->
-    <AnalysisLevel>8.0-recommended</AnalysisLevel>
-    <EnableNETAnalyzers>true</EnableNETAnalyzers>
-    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-    <RunAnalyzers>true</RunAnalyzers>
-    <RunCodeAnalysis>false</RunCodeAnalysis>
 
     <RestoreAdditionalProjectSources>
       https://api.nuget.org/v3/index.json;
@@ -33,14 +20,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ManagedDoom\ManagedDoom.csproj" />
+    <ProjectReference Include="..\ManagedDoom\LethalCompany.Doom.ManagedDoom.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="BepInEx.Analyzers" Version="1.0.8" PrivateAssets="all"/>
     <PackageReference Include="BepInEx.Core" Version="5.4.21" PrivateAssets="all"/>
-    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0" PrivateAssets="all" />
-    <PackageReference Include="PolySharp" Version="1.14.0" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
