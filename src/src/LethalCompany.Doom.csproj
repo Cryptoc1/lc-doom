@@ -10,6 +10,7 @@
     <LangVersion>12.0</LangVersion>
     <Nullable>enable</Nullable>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <Version>1.0.0</Version>
 
     <!-- analyzers -->
     <AnalysisLevel>8.0-recommended</AnalysisLevel>
@@ -20,7 +21,7 @@
 
     <RestoreAdditionalProjectSources>
       https://api.nuget.org/v3/index.json;
-      https://nuget.bepinex.dev/v3/index.json;            
+      https://nuget.bepinex.dev/v3/index.json;
     </RestoreAdditionalProjectSources>
   </PropertyGroup>
 
@@ -99,6 +100,27 @@
 
   <Target Name="PublishToPluginDirectory" AfterTargets="Publish" Condition=" '$(PublishPlugin)' == 'true' ">
     <Exec Command="copy /y &quot;$(PublishDir)&quot; &quot;$(PluginPublishDir)&quot;" />
+  </Target>
+
+  <Target Name="GeneratePluginInfo" BeforeTargets="BeforeCompile;CoreCompile" Inputs="$(MSBuildAllProjects)" Outputs="$(IntermediateOutputPath)GeneratedFile.cs">
+    <PropertyGroup>
+      <GeneratedText><![CDATA[namespace $(RootNamespace) 
+{
+    public static class DoomPluginInfo
+    {
+        public const string Identifier = "cryptoc1.lethalcompany.doom"%3B
+        public const string Name = "LC-DOOM"%3B
+        public const string Version = "$(Version)"%3B
+    }
+}]]></GeneratedText>
+      <GeneratedFilePath>$(IntermediateOutputPath)DoomPluginInfo.cs</GeneratedFilePath>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Include="$(GeneratedFilePath)" />
+      <FileWrites Include="$(GeneratedFilePath)" />
+    </ItemGroup>
+    <WriteLinesToFile Lines="$(GeneratedText)" File="$(GeneratedFilePath)" WriteOnlyWhenDifferent="true" Overwrite="true" />
   </Target>
 
 </Project>
