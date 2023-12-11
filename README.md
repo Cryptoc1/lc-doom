@@ -25,5 +25,6 @@ Then,
 
 ## Credits
 
+- [idSoftware](https://www.idsoftware.com)
 - [ManagedDoom](https://github.com/sinshu/managed-doom)
 - [DoomInUnityInspector](https://github.com/xabblll/DoomInUnityInspector)

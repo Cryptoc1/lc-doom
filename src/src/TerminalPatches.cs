@@ -82,7 +82,10 @@ internal static class TerminalPatches
             node.displayText = @$"{DoomPluginInfo.Name} v{DoomPluginInfo.Version}
 https://github.com/cryptoc1/lc-doom
  
-CREDITS:  
+CREDITS:
+• id Software
+  https://www.idsoftware.com
+
 • {ApplicationInfo.Title}
   https://github.com/sinshu/managed-doom
 

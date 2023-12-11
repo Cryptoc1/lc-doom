@@ -1,0 +1,9 @@
+{
+    "name": "LC_DOOM",
+    "version_number": "1.0.0",
+    "website_url": "https://github.com/cryptoc1/lc-doom",
+    "description": "Play DOOM in the Ship's Terminal",
+    "dependencies": [
+        "BepInEx-BepInExPack-5.4.2100"
+    ]
+}
