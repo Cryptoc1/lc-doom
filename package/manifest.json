@@ -1,6 +1,6 @@
 {
     "name": "LC_DOOM",
-    "version_number": "1.0.1",
+    "version_number": "1.1.0",
     "website_url": "https://github.com/cryptoc1/lc-doom",
     "description": "Play DOOM in the Ship's Terminal",
     "dependencies": [
