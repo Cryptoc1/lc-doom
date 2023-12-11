@@ -9,14 +9,13 @@ namespace LethalCompany.Doom;
 [HarmonyPatch(typeof(Terminal))]
 internal static class TerminalPatches
 {
-    private static readonly Lazy<string> SoundFontPath = new(GetSoundFontPath);
     private static readonly Vector2 TerminalImageSize = new(428, 500);
     private static readonly Vector3 TerminalImageRotation = new(0, 0, 90);
     private static readonly Vector2 TerminalImageTranslation = new(11.65f, -48);
-    private static readonly Lazy<string> WadPath = new(GetWadPath);
 
     [MemberNotNullWhen(true, nameof(cpu), nameof(doom), nameof(terminalImageSize))]
     private static bool isRunning => cpu is not null && doom is not null && terminalImageSize.HasValue;
+
     private static Coroutine? cpu;
     private static UnityDoom? doom;
     private static Vector2? terminalImageSize;
@@ -45,22 +44,6 @@ internal static class TerminalPatches
 
         GC.Collect();
         DoomPlugin.Value.Logger.LogInfo("TerminalPatches: destroyed doom instance");
-    }
-
-    private static string GetSoundFontPath()
-    {
-        var location = Path.GetDirectoryName(
-            typeof(DoomPlugin).Assembly.Location);
-
-        return Path.Combine(location, "RLNDGM.SF2");
-    }
-
-    private static string GetWadPath()
-    {
-        var location = Path.GetDirectoryName(
-            typeof(DoomPlugin).Assembly.Location);
-
-        return Path.Combine(location, "DOOM1.WAD");
     }
 
     [HarmonyPatch("Awake")]
@@ -143,10 +126,9 @@ LOADING .... ";
             __instance.terminalImage.rectTransform.anchoredPosition += TerminalImageTranslation;
             __instance.terminalImageMask.enabled = false;
 
-            doom = new(
-                new(["iwad", WadPath.Value]),
-                (Mathf.RoundToInt(TerminalImageSize.x), Mathf.RoundToInt(TerminalImageSize.y)),
-                SoundFontPath.Value);
+            doom = new(new(
+                DoomPlugin.Value.Config,
+                (Mathf.RoundToInt(TerminalImageSize.x), Mathf.RoundToInt(TerminalImageSize.y))));
         }
     }
 

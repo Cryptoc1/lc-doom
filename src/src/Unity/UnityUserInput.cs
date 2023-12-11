@@ -47,7 +47,7 @@ internal sealed class UnityUserInput : IUserInput, IDisposable
         var keyStrafeRight = IsPressed(config.key_straferight);
         var keyTurnLeft = IsPressed(config.key_turnleft);
         var keyTurnRight = IsPressed(config.key_turnright);
-        var keyFire = IsPressed(config.key_fire) || PressedKeys.Contains(DoomKey.F);
+        var keyFire = IsPressed(config.key_fire);
         var keyUse = IsPressed(config.key_use);
         var keyRun = IsPressed(config.key_run);
         var keyStrafe = IsPressed(config.key_strafe);
