@@ -4,7 +4,7 @@
     <ImplicitUsings>true</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
 
     <RestoreAdditionalProjectSources>
       https://api.nuget.org/v3/index.json;
