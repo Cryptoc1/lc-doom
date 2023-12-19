@@ -4,6 +4,8 @@ using ManagedDoom;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+using EventType = ManagedDoom.EventType;
+
 namespace LethalCompany.Doom.Unity;
 
 /* Based on DoomInUnityInspector/Unity/UnityDoom.cs, and ManagedDoom/src/Silk/SilkDoom.cs */

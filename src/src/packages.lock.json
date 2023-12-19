@@ -18,6 +18,12 @@
           "HarmonyX": "2.7.0"
         }
       },
+      "LethalAPI.GameLibs": {
+        "type": "Direct",
+        "requested": "[45.1.0, )",
+        "resolved": "45.1.0",
+        "contentHash": "6Sc+qwfRIxC4/wbGQWpXPvlvLIDDz95M/L7fJ6rz/efOx111r1fw/zxMkKMqmdHai6VS8hE6l8SEWIYU2I6mIg=="
+      },
       "Microsoft.CodeAnalysis.NetAnalyzers": {
         "type": "Direct",
         "requested": "[8.0.0, )",
@@ -26,9 +32,9 @@
       },
       "PolySharp": {
         "type": "Direct",
-        "requested": "[1.14.0, )",
-        "resolved": "1.14.0",
-        "contentHash": "3K6beiIeVO0hOlHCHv2jgGW7UH3OXsOIiEW60CHpqGvbrHyy4iQfGkCOBtI92PDCaA8XC4ZM3+02g2qenRnHOA=="
+        "requested": "[1.14.1, )",
+        "resolved": "1.14.1",
+        "contentHash": "mOOmFYwad3MIOL14VCjj02LljyF1GNw1wP0YVlxtcPvqdxjGGMNdNJJxHptlry3MOd8b40Flm8RPOM8JOlN2sQ=="
       },
       "BepInEx.BaseLib": {
         "type": "Transitive",

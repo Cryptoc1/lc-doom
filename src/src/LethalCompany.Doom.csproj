@@ -1,111 +1,22 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="LethalCompany.Plugin.Sdk/1.0.0-rc.0.11">
 
   <PropertyGroup>
-    <ImplicitUsings>true</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <Description>Play DOOM in the Ship's Terminal</Description>
+    <PluginId>cryptoc1.lethalcompany.doom</PluginId>
+    <PluginInfoTypeName>DoomPluginInfo</PluginInfoTypeName>
+    <PackageId>LC_DOOM</PackageId>
+    <PackageReadMeFile>..\..\README.md</PackageReadMeFile>
+    <Title>LC-DOOM</Title>
     <Version>1.1.1</Version>
-
-    <RestoreAdditionalProjectSources>
-      https://api.nuget.org/v3/index.json;
-      https://nuget.bepinex.dev/v3/index.json;
-    </RestoreAdditionalProjectSources>
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="DOOM1.WAD" CopyToPublishDirectory="PreserveNewest" />
     <None Include="LethalCompany.Doom.Plugin.csproj.user" />
-    <Content Include="DOOM1.WAD">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ManagedDoom\LethalCompany.Doom.ManagedDoom.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="BepInEx.Analyzers" Version="1.0.8" PrivateAssets="all"/>
-    <PackageReference Include="BepInEx.Core" Version="5.4.21" PrivateAssets="all"/>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Assembly-CSharp" Private="False">
-      <HintPath>$(GameManagedDir)\Assembly-CSharp.dll</HintPath>
-    </Reference>
-
-    <Reference Include="UnityEngine" Private="False">
-      <HintPath>$(GameManagedDir)\UnityEngine.dll</HintPath>
-    </Reference>
-
-    <Reference Include="UnityEngine.AudioModule" Private="False">
-      <HintPath>$(GameManagedDir)\UnityEngine.AudioModule.dll</HintPath>
-    </Reference>
-
-    <Reference Include="UnityEngine.CoreModule" Private="False">
-      <HintPath>$(GameManagedDir)\UnityEngine.CoreModule.dll</HintPath>
-    </Reference>
-
-    <Reference Include="UnityEngine.InputModule" Private="False">
-      <HintPath>$(GameManagedDir)\UnityEngine.InputModule.dll</HintPath>
-    </Reference>
-
-    <Reference Include="UnityEngine.InputLegacyModule" Private="False">
-      <HintPath>$(GameManagedDir)\UnityEngine.InputLegacyModule.dll</HintPath>
-    </Reference>
-
-    <Reference Include="Unity.InputSystem" Private="False">
-      <HintPath>$(GameManagedDir)\Unity.InputSystem.dll</HintPath>
-    </Reference>
-
-    <Reference Include="UnityEngine.UI" Private="False">
-      <HintPath>$(GameManagedDir)\UnityEngine.UI.dll</HintPath>
-    </Reference>
-
-    <Reference Include="Unity.NetCode.Runtime" Private="False">
-      <HintPath>$(GameManagedDir)\Unity.NetCode.Runtime.dll</HintPath>
-    </Reference>
-
-    <Reference Include="Unity.TextMeshPro" Private="False">
-      <HintPath>$(GameManagedDir)\Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Using Include="System.Collections" />
-    <Using Include="HarmonyLib" />
-  </ItemGroup>
-
-  <Target Name="CleanPluginDirectory" AfterTargets="Clean" BeforeTargets="PublishToPluginDirectory" Condition=" '$(PublishPlugin)' == 'true' ">
-    <ItemGroup>
-      <_PluginFiles Include="$(PluginPublishDir)\**\*.*" />
-    </ItemGroup>
-
-    <Delete Files="@(_PluginFiles)" />
-  </Target>
-
-  <Target Name="PublishToPluginDirectory" AfterTargets="Publish" Condition=" '$(PublishPlugin)' == 'true' ">
-    <Exec Command="copy /y &quot;$(PublishDir)&quot; &quot;$(PluginPublishDir)&quot;" />
-  </Target>
-
-  <Target Name="GeneratePluginInfo" BeforeTargets="BeforeCompile;CoreCompile" Inputs="$(MSBuildAllProjects)" Outputs="$(IntermediateOutputPath)GeneratedFile.cs">
-    <PropertyGroup>
-      <GeneratedText><![CDATA[namespace $(RootNamespace) 
-{
-    public static class DoomPluginInfo
-    {
-        public const string Identifier = "cryptoc1.lethalcompany.doom"%3B
-        public const string Name = "LC-DOOM"%3B
-        public const string Version = "$(Version)"%3B
-    }
-}]]></GeneratedText>
-      <GeneratedFilePath>$(IntermediateOutputPath)DoomPluginInfo.cs</GeneratedFilePath>
-    </PropertyGroup>
-
-    <ItemGroup>
-      <Compile Include="$(GeneratedFilePath)" />
-      <FileWrites Include="$(GeneratedFilePath)" />
-    </ItemGroup>
-    <WriteLinesToFile Lines="$(GeneratedText)" File="$(GeneratedFilePath)" WriteOnlyWhenDifferent="true" Overwrite="true" />
-  </Target>
 
 </Project>

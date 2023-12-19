@@ -9,7 +9,6 @@
                 "publish",
                 "${workspaceFolder}/src/src/LethalCompany.Doom.csproj",
                 "/p:GenerateFullPaths=true",
-                "/p:PublishPlugin=true",
                 "/consoleloggerparameters:NoSummary",
             ],
             "runOptions": {
