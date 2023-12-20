@@ -1,4 +1,4 @@
-<Project Sdk="LethalCompany.Plugin.Sdk/1.0.0-rc.0.16">
+<Project Sdk="LethalCompany.Plugin.Sdk/1.0.0">
 
   <PropertyGroup>
     <Description>Play DOOM in the Ship's Terminal</Description>
