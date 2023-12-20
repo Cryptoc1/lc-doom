@@ -2,21 +2,18 @@ using BepInEx.Logging;
 
 namespace LethalCompany.Doom;
 
-[BepInPlugin(DoomPluginInfo.Identifier, DoomPluginInfo.Name, DoomPluginInfo.Version)]
-public sealed partial class DoomPlugin : BaseUnityPlugin, IDisposable
+[BepInPlugin(GeneratedPluginInfo.Identifier, GeneratedPluginInfo.Name, GeneratedPluginInfo.Version)]
+public sealed class DoomPlugin : BaseUnityPlugin
 {
     public static DoomPlugin Value { get; private set; } = default!;
 
     public new ManualLogSource Logger => base.Logger;
-    private Harmony? harmony;
 
     public void Awake()
     {
         Value = this;
-        harmony = Harmony.CreateAndPatchAll(
+        _ = Harmony.CreateAndPatchAll(
             typeof(DoomPlugin).Assembly,
-            DoomPluginInfo.Identifier);
+            GeneratedPluginInfo.Identifier);
     }
-
-    public void Dispose() => (harmony as IDisposable)?.Dispose();
 }

@@ -4,7 +4,7 @@ using ManagedDoom;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace LethalCompany.Doom;
+namespace LethalCompany.Doom.Patches;
 
 [HarmonyPatch(typeof(Terminal))]
 internal static class TerminalPatches
@@ -62,7 +62,7 @@ internal static class TerminalPatches
         {
             var node = ScriptableObject.CreateInstance<TerminalNode>();
             node.clearPreviousText = true;
-            node.displayText = @$"{DoomPluginInfo.Name} v{DoomPluginInfo.Version}
+            node.displayText = @$"{GeneratedPluginInfo.Name} v{GeneratedPluginInfo.Version}
 https://github.com/cryptoc1/lc-doom
  
 CREDITS:

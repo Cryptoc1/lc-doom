@@ -1,13 +1,12 @@
-<Project Sdk="LethalCompany.Plugin.Sdk/1.0.0">
+<Project Sdk="LethalCompany.Plugin.Sdk/1.0.1">
 
   <PropertyGroup>
+    <Title>LC-DOOM</Title>
     <Description>Play DOOM in the Ship's Terminal</Description>
-    <PluginId>cryptoc1.lethalcompany.doom</PluginId>
-    <PluginInfoTypeName>DoomPluginInfo</PluginInfoTypeName>
     <PackageId>LC_DOOM</PackageId>
     <PackageReadMeFile>..\..\README.md</PackageReadMeFile>
-    <Title>LC-DOOM</Title>
-    <Version>1.1.1</Version>
+    <PluginId>cryptoc1.lethalcompany.doom</PluginId>
+    <Version>1.1.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
