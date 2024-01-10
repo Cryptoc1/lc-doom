@@ -2,7 +2,7 @@
     "sdk": {
         "allowPrerelease": false,
         "rollForward": "latestMajor",
-        "version": "8.0.100"
+        "version": "8.0.101"
     },
     "msbuild-sdks": {
         "LethalCompany.Plugin.Sdk": "1.1.0-rc.10"
