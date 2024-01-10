@@ -1,0 +1,10 @@
+﻿{
+  "version": 1,
+  "dependencies": {
+    "BepInEx-BepInExPack": {
+      "type": "Direct",
+      "requested": "5.4.2100",
+      "resolved": "5.4.2100"
+    }
+  }
+}

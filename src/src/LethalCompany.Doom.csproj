@@ -1,4 +1,4 @@
-<Project Sdk="LethalCompany.Plugin.Sdk/1.0.2">
+<Project Sdk="LethalCompany.Plugin.Sdk">
 
   <PropertyGroup>
     <Title>LC-DOOM</Title>
@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <Content Include="DOOM1.WAD" CopyToPublishDirectory="PreserveNewest" />
-    <None Include="LethalCompany.Doom.Plugin.csproj.user" />
+    <None Include="LethalCompany.Doom.csproj.user" />
   </ItemGroup>
 
   <ItemGroup>
